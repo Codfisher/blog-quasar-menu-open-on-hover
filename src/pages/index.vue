@@ -1,7 +1,7 @@
 <template>
   <div class="flex gap-10 p-10">
     <div class="p-4 bg-primary text-white rounded cursor-pointer">
-      Menu
+      Hover Menu
 
       <menu-hover>
         <q-list
@@ -86,6 +86,7 @@
       label="Menu"
       color="primary"
       unelevated
+      no-caps
     >
       <q-menu>
         <q-list
