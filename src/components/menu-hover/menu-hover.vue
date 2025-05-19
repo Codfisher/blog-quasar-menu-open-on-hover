@@ -2,6 +2,7 @@
   <q-menu
     ref="menuRef"
     v-model="menuVisible"
+    v-bind="props"
     @mouseenter="handleMenuHover"
     @mouseleave="handleMenuLeave"
   >
@@ -51,6 +52,26 @@ const currentSubmenuList = computed(() => rootProvider?.submenuList.value ?? [])
 const menuLevel = inject('menu-level', 0)
 provide('menu-level', menuLevel + 1)
 
+function bindSubmenu(data: MenuData) {
+  /** 清掉同一層者，因為同層同時只會顯示一個 */
+  submenuList.value = submenuList.value.filter((item) => item.level !== data.level)
+  submenuList.value.push(data)
+}
+function unbindSubmenu(id: string) {
+  const index = submenuList.value.findIndex((item) => item.id === id)
+  if (index !== -1) {
+    submenuList.value.splice(index, 1)
+  }
+}
+if (!rootProvider) {
+  provide(injectionKey, {
+    bindSubmenu,
+    unbindSubmenu,
+    submenuList,
+  })
+}
+
+
 const menuVisible = ref(false)
 const hasSubmenuVisible = computed(() => {
   if (menuLevel === 0 && submenuList.value.length > 0) {
@@ -90,25 +111,5 @@ watch(menuVisible, (value) => {
 onBeforeUnmount(() => {
   rootProvider?.unbindSubmenu(id)
 })
-
-// rootProvider 邏輯
-function bindSubmenu(data: MenuData) {
-  /** 清掉同一層者，因為同層同時只會顯示一個 */
-  submenuList.value = submenuList.value.filter((item) => item.level !== data.level)
-  submenuList.value.push(data)
-}
-function unbindSubmenu(id: string) {
-  const index = submenuList.value.findIndex((item) => item.id === id)
-  if (index !== -1) {
-    submenuList.value.splice(index, 1)
-  }
-}
-if (!rootProvider) {
-  provide(injectionKey, {
-    bindSubmenu,
-    unbindSubmenu,
-    submenuList,
-  })
-}
 </script>
 ./type./type
