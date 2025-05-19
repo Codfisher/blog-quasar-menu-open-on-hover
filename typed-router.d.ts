@@ -19,7 +19,6 @@ declare module 'vue-router/auto-routes' {
    */
   export interface RouteNamedMap {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
-    '/async-children': RouteRecordInfo<'/async-children', '/async-children', Record<never, never>, Record<never, never>>,
     '/dropdowns-enabled-on-hover': RouteRecordInfo<'/dropdowns-enabled-on-hover', '/dropdowns-enabled-on-hover', Record<never, never>, Record<never, never>>,
   }
 }
