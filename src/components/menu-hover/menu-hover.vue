@@ -11,11 +11,11 @@
 
 <script setup lang="ts">
 import type { QMenuProps } from 'quasar'
-import type { MenuData } from './constant'
+import type { MenuData } from './type'
 import { useElementHover, useParentElement } from '@vueuse/core'
 import { debounce, QMenu } from 'quasar'
 import { computed, inject, onBeforeUnmount, provide, ref, watch } from 'vue'
-import { injectionKey } from './constant'
+import { injectionKey } from './type'
 
 interface Props extends Omit<QMenuProps, 'modelValue' | 'target'> {
   disableHoverOpen?: boolean;
@@ -111,3 +111,4 @@ if (!rootProvider) {
   })
 }
 </script>
+./type./type
