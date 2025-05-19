@@ -3,11 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { useMeta } from 'quasar'
 
-useMeta(() => ({
-  title: `BGM Vue 挑戰`,
-}))
 </script>
 
 <style lang="sass">
