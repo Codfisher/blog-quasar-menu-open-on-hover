@@ -112,4 +112,3 @@ onBeforeUnmount(() => {
   rootProvider?.unbindSubmenu(id)
 })
 </script>
-./type./type
